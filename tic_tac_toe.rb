@@ -23,12 +23,17 @@ def continue_next(choose)
   choose == 'Y'
 end
 
-def input_validation(board_status,position_choose)
-  if position_choose % 3 == 0
-    board_status[position_choose/3-1][2] == ' '
+def input_validation(board_status,position_choose) 
+  positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  if positions.include?(position_choose)
+    if position_choose % 3 == 0
+      board_status[position_choose/3-1][2] == ' '
+    else
+      board_status[position_choose/3][position_choose%3-1] == ' '
+    end
   else
-    board_status[position_choose/3][position_choose%3-1] == ' '
-  end  
+    return false
+  end
 end
 
 def board_initial
